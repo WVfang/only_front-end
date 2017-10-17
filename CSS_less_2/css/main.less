@@ -1,0 +1,86 @@
+@main-color: rgb(56, 56, 56);
+@form-color: rgb(43, 43, 43);
+@input-color: rgb(62, 62, 62);
+@button-color: rgb(207, 37, 58);
+@main-text-color: rgb(124, 124, 124);
+@input-text-color: rgb(223, 226, 226);
+
+@icon-size: 40px;
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+// Main font
+.main-font {
+	font: 700 12px 'Lato', sans-serif;
+}
+
+// Style of input fields and button (form elements)
+.form-block {
+	display: block;
+	width: 100%;
+	height: 35px;
+	padding: 10px;
+	border: none;
+	outline: none;
+	.main-font;
+}
+
+// Style of logo and logo-phrase (logo elements)
+.logo-block {
+	margin-bottom: 20px;
+	color: @main-text-color;
+}
+
+body {
+	background: @main-color;
+	.main-font;
+}
+
+#form {
+	width: 300px;
+	margin: 150px auto 0 auto;
+	padding: 50px 0;
+	background: @form-color;
+	text-align: center;
+	#logo {
+		div {
+			.logo-block;
+		}
+		i {
+			font-size: @icon-size;
+			.logo-block;
+		}
+	}
+	#login-form {
+		padding: 0 25px;
+		input {
+			margin-bottom: 2.5px;
+			background: @input-color;
+			color: @input-text-color;
+			.form-block;
+		}
+		a {	
+			float: right;
+			margin-bottom: 20px;
+			color: @main-text-color;
+			font-size: 14px;
+			font-weight: 400;
+		}
+		button {	
+			background: @button-color;
+			color: @input-text-color;
+			.form-block;
+		}
+	}
+}
+
+
+
+
+
