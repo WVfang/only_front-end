@@ -6,6 +6,8 @@
 @input-text-color: rgb(223, 226, 226);
 
 @icon-size: 40px;
+@link-margin-bottom: 20px;
+@logo-elements-margin-bottom: 20px;
 
 *,
 *:before,
@@ -15,13 +17,19 @@
           box-sizing: border-box;
 }
 
+body {
+	margin: 0;
+	background: @main-color;
+	.main-font;
+}
+
 // Main font
-.main-font {
+.main-font() {
 	font: 700 12px 'Lato', sans-serif;
 }
 
 // Style of input fields and button (form elements)
-.form-block {
+.form-block() {
 	display: block;
 	width: 100%;
 	height: 35px;
@@ -32,22 +40,30 @@
 }
 
 // Style of logo and logo-phrase (logo elements)
-.logo-block {
-	margin-bottom: 20px;
+.logo-block() {
+	margin-bottom: @logo-elements-margin-bottom;
 	color: @main-text-color;
 }
 
-body {
-	background: @main-color;
-	.main-font;
-}
-
 #form {
-	width: 300px;
-	margin: 150px auto 0 auto;
-	padding: 50px 0;
+
+	// For desktops and tablets
+	@media (min-width: 480px) {
+		width: 300px;
+		margin: 150px auto 0 auto;
+		padding: 50px 0;
+	}
+
+	// For mobile
+	@media (max-width: 480px) { // @media only srceen and (max-device-width: 480px) 
+		width: 100%;
+		height: 100vh;
+		padding: 50px 0;
+	}
+
 	background: @form-color;
 	text-align: center;
+
 	#logo {
 		div {
 			.logo-block;
@@ -58,24 +74,35 @@ body {
 		}
 	}
 	#login-form {
-		padding: 0 25px;
+		padding: 0 10%;
 		input {
 			margin-bottom: 2.5px;
 			background: @input-color;
-			color: @input-text-color;
+			color: @main-text-color;
 			.form-block;
+			&:focus {
+				&::placeholder {
+					color: transparent;
+				}
+			}
 		}
 		a {	
 			float: right;
-			margin-bottom: 20px;
+			margin-bottom: @link-margin-bottom;
 			color: @main-text-color;
 			font-size: 14px;
 			font-weight: 400;
+			&:hover {
+				color: red;
+			}
 		}
 		button {	
 			background: @button-color;
 			color: @input-text-color;
 			.form-block;
+			&:hover {
+				background: lighten(@button-color, 10%);
+			}
 		}
 	}
 }
