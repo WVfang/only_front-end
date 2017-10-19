@@ -1,0 +1,36 @@
+{
+  "name": "gulp_project",
+  "version": "1.0.1",
+  "description": "Gulp starter project",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssmin": "^0.2.0",
+    "gulp-jshint": "^2.0.4",
+    "gulp-less": "^3.3.2",
+    "gulp-live-server": "0.0.31",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^3.0.0",
+    "gulp-util": "^3.0.8",
+    "jshint": "^2.9.5",
+    "jshint-stylish": "^2.2.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WVfang/only_front-end.git"
+  },
+  "author": "WVfang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WVfang/only_front-end/issues"
+  },
+  "homepage": "https://github.com/WVfang/only_front-end#readme"
+}
