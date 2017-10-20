@@ -11,7 +11,8 @@ var gulp = require('gulp'),
     
     }),
     livereload = require('gulp-livereload'),
-    mainBowerFiles = require('main-bower-files');
+    mainBowerFiles = require('main-bower-files'),
+    jscs = require('gulp-jscs');
 
 // Start Watching: Run "gulp"
 gulp.task('default', ['watch', 'bower-files']);
@@ -45,6 +46,8 @@ gulp.task('build-js', function () {
     return gulp.src('assets/js/*.js')
         .pipe(plugins.jshint())
         .pipe(plugins.jshint.reporter('jshint-stylish'))
+        .pipe(jscs())
+        .pipe(jscs.reporter())
         .pipe(plugins.uglify({
             output: {
                 'ascii_only': true
