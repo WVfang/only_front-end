@@ -2,15 +2,25 @@
 var gulp = require('gulp'),
     gutil = require('gulp-util'),
     plugins = require('gulp-load-plugins')({
-        /*
+        
         rename: {
-            'gulp-live-server': 'serve'
+            'gulp-live-server': 'serve',
+            'gulp-javascript-obfuscator': 'obfuscator',
+            'main-bower-files': 'bower'
         }
-        */
-    });
+    
+    }),
+    livereload = require('gulp-livereload'),
+    mainBowerFiles = require('main-bower-files');
 
 // Start Watching: Run "gulp"
-gulp.task('default', ['watch']);
+gulp.task('default', ['watch', 'bower-files']);
+
+// Returns an array of files where each file is a absolute path without any globs (** or *).
+gulp.task('bower-files', function() {
+    return gulp.src(mainBowerFiles())
+        .pipe(gulp.dest('dist'));
+});
 
 /*
 // Run "gulp server"
@@ -26,7 +36,8 @@ gulp.task('squish-jquery', function () {
             }
         }))
         .pipe(plugins.concat('jquery.plugins.min.js'))
-        .pipe(gulp.dest('build'));
+        .pipe(gulp.dest('build'))
+        .pipe(livereload());
 });
 
 // Minify Custom JS: Run manually with: "gulp build-js"
@@ -39,8 +50,10 @@ gulp.task('build-js', function () {
                 'ascii_only': true
             }
         }))
+        .pipe(plugins.obfuscator())
         .pipe(plugins.concat('scripts.min.js'))
-        .pipe(gulp.dest('build'));
+        .pipe(gulp.dest('build'))
+        .pipe(livereload());
 });
 
 // Less to CSS: Run manually with: "gulp build-css"
@@ -67,11 +80,14 @@ gulp.task('build-css', function () {
             cascade: false
         }))
         .pipe(plugins.cssmin())
-        .pipe(gulp.dest('build')).on('error', gutil.log);
+        .pipe(gulp.dest('build')).on('error', gutil.log)
+        .pipe(livereload());
 });
 
 // Default task
 gulp.task('watch', function () {
+    livereload.listen();
+
     gulp.watch('assets/js/libs/**/*.js', ['squish-jquery']);
     gulp.watch('assets/js/*.js', ['build-js']);
     gulp.watch('assets/less/**/*.less', ['build-css']);

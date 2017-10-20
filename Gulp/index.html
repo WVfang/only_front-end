@@ -3,11 +3,18 @@
 <head>
 	<title>Gulp</title>
 	<link rel="stylesheet" type="text/css" href="build/main.css">
+	<script src="build/scripts.min.js" type="text/javascript"></script>
+	<script src="bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
 </head>
 <body>
 	<div id="wrapper">
 		<h1>Start using Gulp</h1>
 		<p id="text">Im my personal opinion, picking up the syntax of Less is the easy part - expecially since it feels like a natural extension of CSS. I belive the biggest hurdle for developers with Less is the compiling compenent. Between people using different local/server environments, being scared of the command line, or just the hurdle caused by learning a task-runner, integrating Less or any preprocessor can be quite troublesome without some guidance</p>
+		<p id="paragraph"></p>
+		<script type="text/javascript">
+			var p = document.getElementById("paragraph");
+			p.innerHTML = y;
+		</script>
 	</div>
 </body>
 </html>
