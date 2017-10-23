@@ -9,6 +9,7 @@
   "homepage": "https://github.com/WVfang/only_front-end",
   "private": true,
   "dependencies": {
-    "jquery": "^3.2.1"
+    "jquery": "^3.2.1",
+    "bootstrap": "^3.3.7"
   }
 }

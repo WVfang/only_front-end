@@ -4,17 +4,152 @@
 	<title>Gulp</title>
 	<link rel="stylesheet" type="text/css" href="build/main.css">
 	<script src="build/scripts.min.js" type="text/javascript"></script>
-	<script src="bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
+	<script src="dist/jquery.js" type="text/javascript"></script>
+	<script src="dist/bootstrap.js" type="text/javascript"></script>
+	<script src="https://use.fontawesome.com/1ea9bd3578.js"></script>
+	<link rel="stylesheet" type="text/css" href="bower_components\bootstrap\dist\css\bootstrap.min.css">
 </head>
 <body>
-	<div id="wrapper">
-		<h1>Start using Gulp</h1>
-		<p id="text">Im my personal opinion, picking up the syntax of Less is the easy part - expecially since it feels like a natural extension of CSS. I belive the biggest hurdle for developers with Less is the compiling compenent. Between people using different local/server environments, being scared of the command line, or just the hurdle caused by learning a task-runner, integrating Less or any preprocessor can be quite troublesome without some guidance</p>
-		<p id="paragraph"></p>
-		<script type="text/javascript">
-			var p = document.getElementById("paragraph");
-			p.innerHTML = y;
-		</script>
+	<div id="header" class="panel panel-default">
+		<div class="panel-body">
+			<div class="col-md-3 col-sm-3 col-xs-3">Logo</div>
+			<div class="col-md-5 col-sm-5 col-xs-5">Dashboard Name</div>
+			<div class="col-md-4 col-sm-4 col-xs-4">
+				<i class="fa fa-user-circle-o" aria-hidden="true"></i>
+				UserName
+			</div>
+		</div>
 	</div>
+	<div id="info">
+		<div class="panel panel-default col-md-2 cold-sm-2 col-xs-2">
+			<div class="panel-body">
+				<div class="icon">
+					<i class="fa fa-user-o" aria-hidden="true"></i>
+				</div>
+				Visitors
+			</div>
+		</div>
+		<div class="panel panel-default col-md-2 cold-sm-2 col-xs-2">
+			<div class="panel-body">
+				<div class="icon">
+					<i class="fa fa-facebook" aria-hidden="true"></i>
+				</div>
+				Shares
+			</div>
+		</div>
+		<div class="panel panel-default col-md-2 cold-sm-2 col-xs-2">
+			<div class="panel-body">
+				<div class="icon">
+					<i class="fa fa-usd" aria-hidden="true"></i>
+				</div>
+				Orders
+			</div>
+		</div>
+		<div class="panel panel-default col-md-2 cold-sm-2 col-xs-2">
+			<div class="panel-body">
+				<div class="icon">
+					<i class="fa fa-envelope-o" aria-hidden="true"></i>
+				</div>
+				Messages
+			</div>
+		</div>
+		<div class="panel panel-default col-md-2 cold-sm-2 col-xs-2">
+			<div class="panel-body">
+				<div class="icon">
+					<i class="fa fa-frown-o" aria-hidden="true"></i>
+				</div>
+				Falldouns
+			</div>
+		</div>
+	<div>
+	<div id="main-content">
+		<div class="col-xs-9 col-sm-9 col-md-9 content-table">
+			<table class="table table-bordered">
+				<thead>
+						<th>Full Name</th>
+						<th>Username</th>
+						<th>Created</th>
+						<th>Last login</th>
+						<th>E-mail</th>
+						<th>Actions</th>
+				</thead>
+				<tbody>
+					<tr>
+						<th>Full Name</th>
+						<th>Username</th>
+						<th>11.04.13</th>
+						<th>16.03.14</th>
+						<th>someone@gmail.com</th>
+						<th>
+							<button type="button" data-toggle="modal" data-target="#edit-user">
+								<i class="fa fa-check-square-o" aria-hidden="true"></i>	
+							</button>
+							<button>
+								<i class="fa fa-trash" aria-hidden="true"></i>
+							</button>
+						</th>
+					</tr>
+					<tr>
+						<th>Full Name</th>
+						<th>Username</th>
+						<th>11.04.13</th>
+						<th>16.03.14</th>
+						<th>someone@gmail.com</th>
+						<th>
+							<button type="button" data-toggle="modal" data-target="#edit-user">
+								<i class="fa fa-check-square-o" aria-hidden="true"></i>	
+							</button>
+							<button>
+								<i class="fa fa-trash" aria-hidden="true"></i>
+							</button>
+						</th>
+					</tr>
+					<tr>
+						<th>Full Name</th>
+						<th>Username</th>
+						<th>11.04.13</th>
+						<th>16.03.14</th>
+						<th>someone@gmail.com</th>
+						<th>
+							<button type="button" data-toggle="modal" data-target="#edit-user">
+								<i class="fa fa-check-square-o" aria-hidden="true"></i>	
+							</button>
+							<button>
+								<i class="fa fa-trash" aria-hidden="true"></i>
+							</button>
+						</th>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="panel panel-default col-xs-2 col-sm-2 col-md-2">
+			<div class="panel-body">
+				<div>
+					Kiev
+					<i class="fa fa-map-marker" aria-hidden="true"></i><br>
+					<img src="assets/img/sun.svg">
+					24&deg;
+				</div>
+				<div>15:18</div>
+				<div>10.05.2015</div>
+				<div>1$ = 23&#8372;</div>
+			</div>
+		</div>
+	</div>
+	<div id="edit-user" class="modal fade">
+		<div class="modal-dialog">	
+			<div class="modal-content">
+				<div class="modal-header">
+					Edit user
+				</div>
+				<div class="modal-body">
+					<input type="" name="" placeholder="User Name">
+					<input type="" name="" placeholder="Username">
+					<input type="" name="" placeholder="Password">
+					<button data-dismiss="modal">Save</button>
+				</div>
+			</div>
+		</div>
+	</div>	
 </body>
 </html>
