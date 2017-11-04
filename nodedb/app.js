@@ -1,7 +1,13 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
+const expressValidator = require('express-validator');
+const flash = require('connect-flash');
+const session = require('express-session');
+
+// Connection to DB
 mongoose.connect("mongodb://localhost/nodekb");
 let db = mongoose.connection;
 
@@ -25,6 +31,47 @@ let Article = require("./models/article");
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 
+// Body Parser Middlewaer
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+// parse application/json
+app.use(bodyParser.json());
+
+// Set public folder
+app.use(express.static(path.join(__dirname, "public")));
+
+// Express session middleware
+app.use(session({
+  secret: 'keyboard cat',
+  resave: true,
+  saveUninitialized: true
+}));
+
+// Express Messages Middleware
+app.use(require('connect-flash')());
+app.use(function (req, res, next) {
+  res.locals.messages = require('express-messages')(req, res);
+  next();
+});
+
+// Express Validator Middleware
+app.use(expressValidator({
+  errorFormatter: function(param, msg, value) {
+      var namespace = param.split('.')
+      , root    = namespace.shift()
+      , formParam = root;
+
+    while(namespace.length) {
+      formParam += '[' + namespace.shift() + ']';
+    }
+    return {
+      param : formParam,
+      msg   : msg,
+      value : value
+    };
+  }
+}));
+
 // Home route
 app.get("/", function(req, res) {
   Article.find({}, function(err, articles) {
@@ -37,34 +84,82 @@ app.get("/", function(req, res) {
       });
     }
   });
-  /*let articles = [
-    {
-      id:1,
-      title:"Article One",
-      author:"Brad Traversy",
-      body:"This is article one"
-    },
-    {
-      id:2,
-      title:"Article Two",
-      author:"John Doe",
-      body:"This is article two"
-    },
-    {
-      id:3,
-      title:"Article Three",
-      author:"Brad Traversy",
-      body:"This is article three"
-    }
-  ];*/
 });
 
 // Add route
-app.get("/acticles/add", function(req, res) {
+app.get("/articles/add", function(req, res) {
   res.render("add_article", {
     title:"Add Article"
   })
 })
+
+// Add Submit POST route
+app.post("/articles/add", function(req, res) {
+  let article = new Article();
+  article.title = req.body.title;
+  article.author = req.body.author;
+  article.body = req.body.body;
+
+  article.save(function(err) {
+    if(err) {
+      console.log(err);
+      return;
+    } else {
+      req.flash("success", "Article Added");
+      res.redirect("/");
+    }
+  });
+});
+
+// Get single article
+app.get("/article/:id", function(req, res) {
+  Article.findById(req.params.id, function(err, article) {
+    res.render("article", {
+      article: article
+    })
+  });
+});
+
+// Update Submit POST route
+app.post("/articles/edit/:id", function(req, res) {
+  let article = {};
+  article.title = req.body.title;
+  article.author = req.body.author;
+  article.body = req.body.body;
+
+  let query = {_id: req.params.id}
+
+  Article.update(query, article, function(err) {
+    if(err) {
+      console.log(err);
+      return;
+    } else {
+      res.redirect("/");
+    }
+  });
+});
+
+// Deleting article
+app.delete("/article/:id", function(req, res) {
+  let query = {_id: req.params.id}
+
+  Article.remove(query, function(err) {
+    if(err) {
+      console.log(err);
+    }
+    res.send("Success");
+  });
+});
+
+// Load edit from
+app.get("/article/edit/:id", function(req, res) {
+  Article.findById(req.params.id, function(err, article) {
+    res.render("edit_article", {
+      title:"Edit Article",
+      article: article
+    })
+  });
+});
 
 // Start server
 app.listen(3000, function() {
