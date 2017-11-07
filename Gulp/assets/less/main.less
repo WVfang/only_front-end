@@ -1,20 +1,33 @@
-@panels-margin: 1.38%;
+@statistic-panels-margin: 1.38%;
+@statistic-icons-margin: 14px;
 
 @input-color: #000;
 @background-color: rgb(220,220,220);
+@border-color: rgb(0, 0, 0);
+
+// Mode: Tablet
+@tablet: ~"(min-width: 768px) and (max-width: 1024px)";
+@tablet-area: 750px;
+// Mode: Desktop
+@desktop: ~"(min-width: 1024px)";
+@desktop-area: 970px;
+// Mode: Mobile
+@mobile: ~"(min-width: 320px) and (max-width: 768px)";
+@mobile-area: 670px;
 
 body {
 	background-color: @background-color !important;
 }
 
+// Header styles
 #header {
 	.panel-body {
 		padding: 0;
 		div {
 			padding: 10px;
 			font-size: 30px;
-			border-right: 1px solid black;
-			border-bottom: 1px solid black;
+			border-right: 1px solid @border-color;
+			border-bottom: 1px solid @border-color;
 			white-space: nowrap;
 		}
 		:last-child {
@@ -22,41 +35,60 @@ body {
 		}
 	}
 }
-
+// Statistic styles
 #info {
-
 	.panel {
-		margin-left: @panels-margin;
-		margin-right: @panels-margin;
+		margin-left: @statistic-panels-margin;
+		margin-right: @statistic-panels-margin;
 		padding: 0;
 		border-radius: 0;
-		border-color: black;
+		border-color: @border-color;
 		.panel-body {
-			vertical-align: top;
+
 		}
 	}
-
 	.icon {
 		display: inline-block;
 		width: 50px;
 		height: 50px;
-		border: 1.5px solid black;
+		border: 1.5px solid @border-color;
 		border-radius: 50%;
 		text-align: center;
 		i {
-			line-height: 50px;
+			margin-top: @statistic-icons-margin;
 			font-size: 20px;
 		}
 	}
-
+	.statistic-info {
+		display: inline-block;
+		width: 100%;
+	}
 }
 
+// Table of users information styles
 #main-content {
-
+	.table-main-info {
+		font-size: 18px;
+		div, button, input {
+				display: inline-block;
+		}
+		button {
+			background-color: @background-color !important;
+			border: 1px solid @border-color !important;
+		}
+		input {
+			float: right;
+			width: 40%;
+			padding: 5px;
+			border-radius: 4px;
+			border-color: @border-color;
+			outline: none;
+		}
+	}
 	.content-table {
 		padding: 0;
-		margin-left: @panels-margin;
-		margin-right: @panels-margin;
+		margin-left: @statistic-panels-margin;
+		margin-right: @statistic-panels-margin;
 		background: #fff;
 		.table-bordered > thead > tr > th,
 		.table-bordered > tbody > tr > th,
@@ -64,7 +96,7 @@ body {
 		.table-bordered > thead > tr > td,
 		.table-bordered > tbody > tr > td,
 		.table-bordered > tfoot > tr > td {
-			border: 0.5px solid #000000;
+			border: 0.5px solid @border-color;
 		}
 		.table-bordered {
 			margin: 0;
@@ -90,31 +122,32 @@ body {
 
 			> div {
 				padding: 5px;
-				border-bottom: 1px solid black;
+				border-bottom: 1px solid @border-color;
 			}
 
 			:last-child {
 				border-bottom: none;
 			}
 		}
-	
+
 	}
 }
 
+// Modal edit window styles
 #edit-user {
 	border-radius: 0;
 	.modal-dialog {
 		width: 300px;
 		.modal-content {
 			border-radius: 0;
-			border-color: black;
+			border-color: @border-color;
 			background-color: @background-color;
 			.modal-header {
 				padding: 10px;
 				font-size: 16px;
 				font-weight: 700;
 				text-align: center;
-				border-color: black;
+				border-color: @border-color;
 				background-color: #fff;
 			}
 			.modal-body {
@@ -125,8 +158,8 @@ body {
 					width: 100%;
 					margin-bottom: 10px;
 					padding: 5px;
-					border: 1px solid black;
-					
+					border: 1px solid @border-color;
+
 					&::-webkit-input-placeholder{
 						color: @input-color;
 				    }
@@ -142,12 +175,12 @@ body {
 				    &:-ms-input-placeholder{
 						color: @input-color;
 				    }
-				}	
+				}
 				button {
 					width: 50%;
 					height: 30px;
-					color: black;
-					border: 1px solid black;
+					color: @border-color;
+					border: 1px solid @border-color;
 					background-color: #fff;
 				}
 			}

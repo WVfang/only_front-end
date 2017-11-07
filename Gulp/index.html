@@ -26,7 +26,10 @@
 				<div class="icon">
 					<i class="fa fa-user-o" aria-hidden="true"></i>
 				</div>
-				Visitors
+				<div class="statistic-info">
+					<div>Visitors</div>
+					<div>19.001</div>
+				</div>
 			</div>
 		</div>
 		<div class="panel panel-default col-md-2 cold-sm-2 col-xs-2">
@@ -34,7 +37,10 @@
 				<div class="icon">
 					<i class="fa fa-facebook" aria-hidden="true"></i>
 				</div>
-				Shares
+				<div class="statistic-info">
+					<div>Shares</div>
+					<div>13.015</div>
+				</div>
 			</div>
 		</div>
 		<div class="panel panel-default col-md-2 cold-sm-2 col-xs-2">
@@ -42,7 +48,10 @@
 				<div class="icon">
 					<i class="fa fa-usd" aria-hidden="true"></i>
 				</div>
-				Orders
+				<div class="statistic-info">
+					<div>Orders</div>
+					<div>1057</div>
+				</div>
 			</div>
 		</div>
 		<div class="panel panel-default col-md-2 cold-sm-2 col-xs-2">
@@ -50,7 +59,10 @@
 				<div class="icon">
 					<i class="fa fa-envelope-o" aria-hidden="true"></i>
 				</div>
-				Messages
+				<div class="statistic-info">
+					<div>Messages</div>
+					<div>5.087</div>
+				</div>
 			</div>
 		</div>
 		<div class="panel panel-default col-md-2 cold-sm-2 col-xs-2">
@@ -58,13 +70,24 @@
 				<div class="icon">
 					<i class="fa fa-frown-o" aria-hidden="true"></i>
 				</div>
-				Falldouns
+				<div class="statistic-info">
+					<div>Falldouns</div>
+					<div>10/month</div>
+				</div>
 			</div>
 		</div>
 	<div>
 	<div id="main-content">
 		<div class="col-xs-9 col-sm-9 col-md-9 content-table">
 			<table class="table table-bordered">
+				<thead>
+					<th class="table-main-info" colspan="6">
+						<div>Users</div>
+						<div>13k</div>
+						<button class="btn">Add new</button>
+						<input type="text" name="search" placeholder="Search...">
+					</th>
+				</thead>
 				<thead>
 						<th>Full Name</th>
 						<th>Username</th>
@@ -82,7 +105,22 @@
 						<th>someone@gmail.com</th>
 						<th>
 							<button type="button" data-toggle="modal" data-target="#edit-user">
-								<i class="fa fa-check-square-o" aria-hidden="true"></i>	
+								<i class="fa fa-check-square-o" aria-hidden="true"></i>
+							</button>
+							<button>
+								<i class="fa fa-trash" aria-hidden="true"></i>
+							</button>
+						</th>
+					</tr>
+					<tr>
+						<th>Full Name</th>
+						<th>Username</th>
+						<th>01.04.13</th>
+						<th>16.03.14</th>
+						<th>someone@gmail.com</th>
+						<th>
+							<button type="button" data-toggle="modal" data-target="#edit-user">
+								<i class="fa fa-check-square-o" aria-hidden="true"></i>
 							</button>
 							<button>
 								<i class="fa fa-trash" aria-hidden="true"></i>
@@ -97,22 +135,7 @@
 						<th>someone@gmail.com</th>
 						<th>
 							<button type="button" data-toggle="modal" data-target="#edit-user">
-								<i class="fa fa-check-square-o" aria-hidden="true"></i>	
-							</button>
-							<button>
-								<i class="fa fa-trash" aria-hidden="true"></i>
-							</button>
-						</th>
-					</tr>
-					<tr>
-						<th>Full Name</th>
-						<th>Username</th>
-						<th>11.04.13</th>
-						<th>16.03.14</th>
-						<th>someone@gmail.com</th>
-						<th>
-							<button type="button" data-toggle="modal" data-target="#edit-user">
-								<i class="fa fa-check-square-o" aria-hidden="true"></i>	
+								<i class="fa fa-check-square-o" aria-hidden="true"></i>
 							</button>
 							<button>
 								<i class="fa fa-trash" aria-hidden="true"></i>
@@ -137,7 +160,7 @@
 		</div>
 	</div>
 	<div id="edit-user" class="modal fade">
-		<div class="modal-dialog">	
+		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
 					Edit user
@@ -150,6 +173,6 @@
 				</div>
 			</div>
 		</div>
-	</div>	
+	</div>
 </body>
 </html>

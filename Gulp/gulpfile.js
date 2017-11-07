@@ -2,13 +2,13 @@
 var gulp = require('gulp'),
     gutil = require('gulp-util'),
     plugins = require('gulp-load-plugins')({
-        
+
         rename: {
             'gulp-live-server': 'serve',
             'gulp-javascript-obfuscator': 'obfuscator',
             'main-bower-files': 'bower'
         }
-    
+
     }),
     livereload = require('gulp-livereload'),
     mainBowerFiles = require('main-bower-files'),
@@ -27,6 +27,11 @@ gulp.task('bower-files', function() {
 // Run "gulp server"
 gulp.task('server', ['serve', 'watch']);
 */
+
+gulp.task('build-html', function() {
+    return gulp.src('*.html')
+        .pipe(livereload());
+});
 
 // Minify jQuery Plugins: Run manually with: "gulp squish-jquery"
 gulp.task('squish-jquery', function () {
@@ -94,6 +99,7 @@ gulp.task('watch', function () {
     gulp.watch('assets/js/libs/**/*.js', ['squish-jquery']);
     gulp.watch('assets/js/*.js', ['build-js']);
     gulp.watch('assets/less/**/*.less', ['build-css']);
+    gulp.watch('*.html', ['build-html']);
 });
 
 // Folder "/" serving at http://localhost:8888
