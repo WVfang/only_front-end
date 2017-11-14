@@ -1,4 +1,69 @@
-@statistic-panels-margin: 1.38%;
+@border-color: #000;
+@statistic-panels-margin: 1.66%;//1.38%;
+@statistic-icons-margin: 14px;
+
+
+.header {
+	background-color: #fff;
+	font-size: 40px;
+	white-space: nowrap;
+	> div {
+		border-right: 1px solid @border-color;
+		border-bottom: 1px solid @border-color;
+	}
+	> div:last-child {
+		border-right: none;
+	}
+}
+
+.statistic {
+	margin-top: 30px;
+	font-size: 20px;
+	.statistic-unit {
+		padding: 15px;
+		margin-left: @statistic-panels-margin;
+		margin-right: @statistic-panels-margin;
+		border: 1px solid @border-color;
+		> div {
+			padding: 0;
+		}
+		.icon {
+			width: 50px;
+			height: 50px;
+			border: 1px solid @border-color;
+			border-radius: 50%;
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*@statistic-panels-margin: 1.38%;
 @statistic-icons-margin: 14px;
 
 @input-color: #000;
@@ -186,4 +251,4 @@ body {
 			}
 		}
 	}
-}
+}*/
