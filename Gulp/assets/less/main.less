@@ -1,11 +1,15 @@
 @border-color: #000;
-@statistic-panels-margin: 1.66%;//1.38%;
-@statistic-icons-margin: 14px;
+@statistic-panels-margin: 1.66%;
+@statistic-icons-top-margin: 12.5px;
+@margin-between-rows: 30px;
 
+body {
+	font-family: Helvetica, "Trebuchet MS", Verdana, sans-serif;
+}
 
 .header {
 	background-color: #fff;
-	font-size: 40px;
+	font-size: 35px;
 	white-space: nowrap;
 	> div {
 		border-right: 1px solid @border-color;
@@ -17,8 +21,10 @@
 }
 
 .statistic {
-	margin-top: 30px;
-	font-size: 20px;
+	margin-top: @margin-between-rows;
+	font-size: 15px;
+	font-weight: 700;
+	text-align: center;
 	.statistic-unit {
 		padding: 15px;
 		margin-left: @statistic-panels-margin;
@@ -32,9 +38,49 @@
 			height: 50px;
 			border: 1px solid @border-color;
 			border-radius: 50%;
+			i {
+				font-size: 20px;
+				margin-top: @statistic-icons-top-margin;
+			}
 		}
 	}
 }
+
+.table {
+	margin-top: @margin-between-rows;
+	.user-table-header {
+		font-size: 20px;
+
+		> div,
+		> button {
+			display: inline-block;
+		}
+
+		.user-table-header-input {
+			float: right;
+		}
+
+		/*.user-table-header-users-amount {
+			padding: 5px;
+			border: 1px solid @border-color;
+			border-radius: 50%;
+		}*/
+	}
+}
+
+.table {
+	border: 0.5px solid @border-color !important;
+}
+
+.table-bordered > thead > tr > th,
+.table-bordered > tbody > tr > th,
+.table-bordered > tfoot > tr > th,
+.table-bordered > thead > tr > td,
+.table-bordered > tbody > tr > td,
+.table-bordered > tfoot > tr > td {
+	 border: 0.5px solid @border-color !important;
+}
+
 
 
 
