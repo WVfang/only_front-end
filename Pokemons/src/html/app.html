@@ -3,27 +3,67 @@
 <head>
 	<title>Pokemons</title>
 	<link rel="stylesheet" type="text/css" href="css/app.min.css">
+	<script src="https://use.fontawesome.com/9f4cadc9d1.js"></script>
 </head>
 <body>
 	<header>
-		
+		<i class="fa fa-gitlab" aria-hidden="true"></i>
 	</header>
-	<section>
+	<section class="battle-wrapper">
 		<h1>Pokemon battle</h1>
 		<div>
-			<div>
-				<div class="slidecontainer">
-					<input class="slider" type="range" min="1" max="100" value="50">
+			<div class="battle-options">
+				<div class="battle-option">
+					<label for="player-name-1">Player 1</label>
+					<input id="player-name-1" class="col-1 bottom-bordered" type="text" name="player-name-1">
 				</div>
-			</div>
-			<div>
-				
-			</div>
-			<div>
-				
+
+				<div class="battle-option">
+					<label for="materialize-1">Materialize Select</label>
+					<select id="materialize-1" class="col-1 bottom-bordered">
+						<option>Air</option>
+						<option>Water</option>
+						<option>Fire</option>
+						<option>Earth</option>
+					</select>
+				</div>
+
+				<div class="battle-option">
+					<label for="player-exp-1">Experience</label>
+					<input id="player-exp-1" class="col-1 slider" type="range" min="0" max="10000" value="5000">
+				</div>
+
+			</div><!--
+			--><div class="battle-field">
+				<img src="img/Pokeball.jpg">
+			</div><!--
+			--><div class="battle-options">
+
+				<div class="battle-option">
+					<label for="player-name-2">Player 2</label>
+					<input id="player-name-2" class="col-1 bottom-bordered" type="text" name="player-name-2">
+				</div> 
+
+				<div class="battle-option">
+					<label for="materialize-2">Materialize Select</label>
+					<select id="materialize-2" class="col-1 bottom-bordered">
+						<option>Air</option>
+						<option>Water</option>
+						<option>Fire</option>
+						<option>Earth</option>
+					</select>
+				</div>
+
+				<div class="battle-option">
+					<label for="player-exp-21">Experience</label>
+					<input id="player-exp-2" class="col-1 slider" type="range" min="0" max="10000" value="5000">
+				</div>
+
 			</div>
 		</div>
-		<button>Fight!</button>
+		<div class="button-wrapper">
+			<button class="button-start">Fight!</button>
+		</div>	
 	</section>
 </body>
 </html>

@@ -7,6 +7,9 @@ var gulp 		= require('gulp'),
 gulp.task('webserver', function() {
 	gulp.src(config.app)
 		.pipe(webserver({
+			livereload: {
+				enable: true
+			},
 			directoryListing: {
 				enable: true,
 				path: config.app
