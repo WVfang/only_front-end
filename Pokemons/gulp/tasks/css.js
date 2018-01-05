@@ -5,6 +5,7 @@ var gulp		= require('gulp'),
 	prefix		= require('gulp-autoprefixer'),
 	minify		= require('gulp-minify-css'),
 	rename		= require('gulp-rename'),
+	plumber		= require('gulp-plumber'),
 	gulpif		= require('gulp-if'),
 	notifier	= require('../helpers/notifier'),
 	config		= require('../config').css;
@@ -17,6 +18,7 @@ gulp.task('css', function(cb) {
 		var build = function() {
 			return (
 				gulp.src(bundle.src)
+					.pipe(plumber())
 					.pipe(less())
 					.pipe(prefix(config.autoprefixer))
 					.pipe(gulpif(bundle.compress, minify()))
@@ -36,7 +38,7 @@ gulp.task('css', function(cb) {
 
 		return build();
 	}
-	console.log(config.bundles);
+	
 	config.bundles.forEach(buildCSS);
 
 });

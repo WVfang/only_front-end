@@ -1,47 +1,80 @@
-/* Basic dimensions */
+/* Basic options */
 
 header {
-	background: @header-color;
 	height: @header-height;
-	i:before {
+	margin-bottom: @header-margin;
+	background: @header-color;
+	box-shadow: 0 0 10px @shadow-color;
+
+	i:before { 							// GitLab icon options
 		font-size: @header-icon-size;
 		color: @header-icon-color;
 	}
-	box-shadow: 0 2px rgba(0, 0, 0, 0.25);
-	margin-bottom: @header-margin;
 }
 
 .battle-field {
-	display: inline-block;
-	width: 30%;
+	.battle-block(30%);
 	img {
-		box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+		box-shadow: 0 0 10px @shadow-color;
 	}
 }
 
 .battle-options {
-	.battle-block();
+	.battle-block(35%);
 	vertical-align: top;
 	padding: 0 2%;
+	input, select {
+		margin-bottom: 20px;
+	}
+	.slider-bubble {
+		display: inline-block;
+		height: 30px;
+		width: 30px;
+		font-size: @slider-bubble-font-size;
+		color: @slider-bubble-font-color;
+		background: @slider-bubble-color;
+		border-radius: 50%;
+		text-align: center;
+		.arrow-down {
+			width: 0;
+			height: 0;
+			margin-top: 5px;
+			border-left: 15px solid transparent;
+			border-right: 15px solid transparent;
+			border-top: 17.5px solid @slider-bubble-color;
+		}
+		.experience-value {
+			margin-top: calc(~'50% - '@slider-bubble-font-size/2);
+		}
+	}
+	// .option-wrapper {
+	// 	display: flex;
+	// 	margin-bottom: @option-bottom-margin;
+	// 	height: 50px;
+	// 	.option {
+	// 		margin: auto;
+	// 	}
+	// }
+	// .option-slider {
+	// 	margin-bottom: 0;
+	// 	margin-top: 10px;
+	// }
 }
 
 /* Other */
-
-.battle-option {
-	margin-bottom: 10px
-}
 
 .button-wrapper {
 	text-align: center;
 	margin-top: 20px;
 	.button-start {
+		padding: @button-padding-vertical @button-padding-horizontal;
 		font-size: @button-font-size;
-		text-transform: uppercase;
+		font-weight: 500;
 		color: @button-font-color;
-		padding: @button-padding;
+		text-transform: uppercase;
 		background: @button-color;
 		border: none;
-		box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);	
+		box-shadow: 0 0 10px @shadow-color;	
 	}
 }
 
@@ -50,8 +83,29 @@ header {
 	border-bottom: 1px solid @input-border-color;
 }
 
+.light-label {
+	font-size: @labels-font-size;	
+	font-weight: 700;
+	color: @labels-color;
+}
+
 /* Grid */
 
 .col-1 {
 	width: 100%;
+}
+
+/* Typography */
+
+h1 {
+	font-size: @heading-font-size;
+	color: @heading-color;
+	text-align: center;
+	margin-bottom: @heading-margin;
+}
+
+input, 
+select {
+	font-size: @input-font-size;
+	padding: @input-padding 0;
 }
