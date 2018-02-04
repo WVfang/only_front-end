@@ -1,67 +1,60 @@
 "use strict";
 
-var gulp 		= require('gulp'),
-	browserify 	= require('browserify'),
-	watchify	= require('watchify'),
-	uglify 		= require('gulp-uglify'),
-	gulpif 		= require('gulp-if'),
-	derequire	= require('gulp-derequire'),
-	sourcemaps 	= require('gulp-sourcemaps'),
-	rename		= require('gulp-rename'),
-	source		= require('vinyl-source-stream'),
-	buffer		= require('vinyl-buffer'),
-	notifier 	= require('../helpers/notifier'),
-	config		= require('../config').scripts;
+// Solving require.extensions.hasOwnproperty is not a function
+// https://github.com/aseemk/requireDir/pull/46/files
 
-gulp.task('scripts', function(cb) {
+module.exports = function(gulp, plugins, other) {
 
-	var queue = config.bundles.length;
+	return function(cb) {
 
-	var buildJS = function(bundle) {
-		
-		var pack = browserify({
-			cache: {},
-			packageCache: {},
-			fullPath: devBuild,
-			entries: bundle.src,
-			standalone: bundle.global,
-			extensions: config.extensions,
-			debug: devBuild
-		});
+		var queue = other.config.bundles.length;
 
-		var build = function() {
-			return (
-				pack.bundle()
-					.pipe(source(bundle.destFile))
-					.pipe(derequire())
-					.pipe(gulpif(bundle.compress, buffer()))
-					.pipe(gulpif(bundle.compress && devBuild, sourcemaps.init({loadMaps: true})))
-					.pipe(gulpif(bundle.compress, uglify()))
-					.pipe(gulpif(bundle.compress, rename({suffix: '.min'})))
-					.pipe(gulpif(bundle.compress && devBuild, sourcemaps.write('./')))
-					.pipe(gulp.dest(bundle.dest))
-					.on('end', handleQueue)
-			);
-		};
+		var buildJS = function(bundle) {
+			
+			var pack = other.browserify({
+				cache: {},
+				packageCache: {},
+				fullPath: devBuild,
+				entries: bundle.src,
+				standalone: bundle.global,
+				extensions: other.config.extensions,
+				debug: devBuild
+			});
 
-		if(isWatching) {
-			console.log("watching");
-			pack = watchify(pack);
-			pack.on('update', build);
+			var build = function() {
+				return (
+					pack.bundle()
+						.pipe(other.source(bundle.destFile))
+						// .pipe(plugins.derequire())
+						// .pipe(plugins.if(bundle.compress, other.buffer()))
+						//.pipe(plugins.if(bundle.compress && devBuild, plugins.sourcemaps.init({loadMaps: true})))
+						//.pipe(plugins.if(bundle.compress, plugins.uglify()))
+						.pipe(plugins.if(bundle.compress, plugins.rename({suffix: '.min'})))
+						//.pipe(plugins.if(bundle.compress && devBuild, plugins.sourcemaps.write('./')))
+						.pipe(gulp.dest(bundle.dest))
+						.on('end', handleQueue)
+				);
+			};
+
+			if(isWatching) {
+				pack = other.watchify(pack);
+				pack.on('update', build);
+			}
+
+			var handleQueue = function() {
+				other.notifier(bundle.destFile);
+				if(queue) {
+					queue--;
+					if (queue === 0) cb();
+				}
+			};
+
+			return build();
+
 		}
 
-		var handleQueue = function() {
-			notifier(bundle.destFile);
-			if(queue) {
-				queue--;
-				if (queue === 0) cb();
-			}
-		};
+		other.config.bundles.forEach(buildJS);
 
-		return build();
-
-	}
-
-	config.bundles.forEach(buildJS);
-
-});
+	};
+	
+};

@@ -1,9 +1,11 @@
 "use strict";
 
-var gulp 	= require('gulp'),
-	del		= require('del'),
-	config	= require('../config').clean;
+module.exports = function(gulp, plugins, other) {
 
-gulp.task('clean', function(cb) {
-	del([].concat(config.dest + "**/*"), cb);
-});
+	return function(cb) {
+
+		return other.del([].concat(other.config.dest + "**/*"), cb);
+		
+	};
+
+};

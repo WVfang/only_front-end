@@ -54,7 +54,9 @@ module.exports	= {
 	copy: {
 		base: _src,
 		from: [
-
+			_src + "fonts/**/*",
+			_src + "libs/**/*",
+			_src + "svg/**/*"
 		],
 		dest: _public
 	},

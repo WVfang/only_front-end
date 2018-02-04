@@ -1,19 +1,21 @@
 "use strict";
 
-var gulp 		= require('gulp'),
-	webserver	= require('gulp-webserver'),
-	config		= require('../config').server;
+module.exports = function(gulp, plugins, other) {
 
-gulp.task('webserver', function() {
-	gulp.src(config.app)
-		.pipe(webserver({
-			livereload: {
-				enable: true
-			},
-			directoryListing: {
-				enable: true,
-				path: config.app
-			},
-			open: true
-		}));
-});
+	return function(cb) {
+
+		return gulp.src(other.config.app)
+			.pipe(plugins.webserver({
+				livereload: {
+					enable: true
+				},
+				directoryListing: {
+					enable: true,
+					path: other.config.app
+				},
+				open: true
+			}));
+
+	};
+	
+};

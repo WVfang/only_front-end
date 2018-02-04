@@ -1,24 +1,21 @@
 "use strict";
 
-var gulp		= require('gulp'),
-	jshint		= require('gulp-jshint'),
-	map			= require('map-stream'),
-	notifier	= require('../helpers/notifier'),
-	finder		= require('../helpers/finder'),
-	config		= require('../config').scripts.lint;
+module.exports = function(gulp, plugins, other) {
 
-gulp.task('lint', function() {
+	return function(cb) {
 
-	var failReporter = map(function(file, cb) {
-		if (!file.jshint.success) notifier(file.relative, true, 'Ooooooops!');
-		cb(null, file);
-	});
+			var failReporter = other.map(function(file, cb) {
+				if (!file.plugins.jshint.success) other.notifier(file.relative, true, 'Ooooooops!');
+				cb(null, file);
+			});
 
-	return (
-		gulp.src(finder(config.dir, 'js'))
-			.pipe(jshint(config.options))
-			.pipe(jshint.reporter())
-			.pipe(failReporter)
-	);
+			return (
+				gulp.src(other.finder(other.config.dir, 'js'))
+					.pipe(plugins.jshint(other.config.options))
+					.pipe(plugins.jshint.reporter())
+					.pipe(failReporter)
+			);
 
-});
+	};
+
+};

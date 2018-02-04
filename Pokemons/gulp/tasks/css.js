@@ -1,44 +1,38 @@
 "use strict";
 
-var gulp		= require('gulp'),
-	less		= require('gulp-less'),
-	prefix		= require('gulp-autoprefixer'),
-	minify		= require('gulp-minify-css'),
-	rename		= require('gulp-rename'),
-	plumber		= require('gulp-plumber'),
-	gulpif		= require('gulp-if'),
-	notifier	= require('../helpers/notifier'),
-	config		= require('../config').css;
+module.exports = function(gulp, plugins, other) {
 
-gulp.task('css', function(cb) {
-	
-	var queue = config.bundles.length;
+	return function(cb) {
 
-	var buildCSS = function(bundle) {
-		var build = function() {
-			return (
-				gulp.src(bundle.src)
-					.pipe(plumber())
-					.pipe(less())
-					.pipe(prefix(config.autoprefixer))
-					.pipe(gulpif(bundle.compress, minify()))
-					.pipe(gulpif(bundle.compress, rename({suffix: '.min'})))
-					.pipe(gulp.dest(bundle.dest))
-					.on('end', handleQueue)
-			)
-		}
+		var queue = other.config.bundles.length;
 
-		var handleQueue = function() {
-			notifier(bundle.destFile);
-			if(queue) {
-				queue--;
-				if(queue === 0) cb();
+		var buildCSS = function(bundle) {
+			var build = function() {
+				return (
+					gulp.src(bundle.src)
+						.pipe(plugins.plumber())
+						.pipe(plugins.less())
+						.pipe(plugins.autoprefixer(other.config.autoprefixer))
+						.pipe(plugins.if(bundle.compress, plugins.cleanCss()))
+						.pipe(plugins.if(bundle.compress, plugins.rename({suffix: '.min'})))
+						.pipe(gulp.dest(bundle.dest))
+						.on('end', handleQueue)
+				)
 			}
+
+			var handleQueue = function() {
+				other.notifier(bundle.destFile);
+				if(queue) {
+					queue--;
+					if(queue === 0) cb();
+				}
+			};
+
+			return build();
 		};
+		
+		other.config.bundles.forEach(buildCSS);
 
-		return build();
-	}
+	};
 	
-	config.bundles.forEach(buildCSS);
-
-});
+};

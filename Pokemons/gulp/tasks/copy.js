@@ -1,9 +1,12 @@
 "use strict";
 
-var gulp 	= require('gulp'),
-	config	= require('../config').copy;
+module.exports = function(gulp, plugins, other) {
 
-gulp.task('copy', function() {
-	gulp.src(config.from, {base: config.base})
-		.pipe(gulp.dest(config.dest));
-});
+	return function(cb) {
+
+		return gulp.src(other.config.from, {base: other.config.base})
+			.pipe(gulp.dest(other.config.dest));
+
+	};
+	
+};

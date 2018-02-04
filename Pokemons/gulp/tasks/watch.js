@@ -1,17 +1,13 @@
 "use strict";
 
-var gulp	= require('gulp'),
-	config	= require('../config'),
-	finder	= require('../helpers/finder');
+module.exports = function(gulp, plugins, other) {
 
-gulp.task('watch', ['watching', 'build'], function() {
+	return function(cb) {
 
-	gulp.watch(finder(config.html.src), ['html']);
-	gulp.watch(finder(config.css.src), ['css']);
-	gulp.watch(finder(config.img.src), ['images']);
+		gulp.watch(other.finder(other.config.html.src), ['html']);
+		gulp.watch(other.finder(other.config.css.src), ['css']);
+		gulp.watch(other.finder(other.config.img.src), ['images']);
+		
+	};
 
-});
-
-gulp.task('watching', function() {
-	global.isWatching = true;
-});
+};
