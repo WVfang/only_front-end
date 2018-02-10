@@ -1,3 +1,5 @@
-var main = require("./components/main");
+var main	 = require("./components/main"),
+	range 	 = require("./components/input_range");
 
-main("Hello, man!");
+main();
+range();

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Pokemons</title>
+	<title>JS</title>
 	<link rel="stylesheet" type="text/css" href="css/app.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
 	<script src="https://use.fontawesome.com/9f4cadc9d1.js"></script>
@@ -11,57 +11,54 @@
 		<!-- <i class="fa fa-gitlab" aria-hidden="true"></i> -->
 	</header>
 	<section class="battle-wrapper">
-		<h1>#%&$#(@#$@)</h1> 
+		<h1>ExpJS</h1> 
 		<!-- <i class="fa fa-gitlab" aria-hidden="true"></i> -->
 		<div>
 			<div class="battle-options">
-				<label class="light-label" for="player-name-1">Player 1</label>
-				<input id="player-name-1" class="col-1 bottom-bordered" type="text" name="player-name-1" placeholder="Player 1">
+				<label class="light-label" for="player-name-1">Player1</label>
+				<input id="player-name-1" class="col-1 bottom-bordered" type="text" name="player-name-1" placeholder="Player 1" value="Reinemert khir Viechesku">
 			
-				<label class="light-label" for="materialize-1">Синяя или красная?</label>
-				<select id="materialize-1" class="col-1 bottom-bordered">
-					<option>Красная</option>
-					<option>Бургер</option>
-					<option>Синяя</option>
-					<option>Черный</option>
+				<label class="light-label" for="materialize-1">Option1</label>
+				<select id="player-materialize-1" class="col-1 bottom-bordered">
+					<option>Fire</option>
+					<option>Earth</option>
+					<option>Electricity</option>
+					<option>Water</option>
 				</select>
 
-				<label for="player-exp-1">Не крутое число</label>
-				<div class="slider-bubble">
-					<div class="experience-value">5000</div>
-					<!-- <div class="arrow-down"></div> -->
+				<label for="player-exp-1">Value1</label>
+				<div class="player-exp-wrapper">
+					<output id="exp-bubble-1" for="exp1" onforminput="value = exp1.valueAsNumber"></output>
+					<input id="player-exp-1" class="col-1 slider" type="range" min="0" max="10000" value="0">
 				</div>
-				<input id="player-exp-1" class="col-1 slider" type="range" min="0" max="10000" value="5000">
 
 			</div><!--
 			--><div class="battle-field">
-				<!-- <img class="col-1" src="img/Pokeball.jpg"> -->
+				<div class="image-wrapper">
+					<img id="winner-board" class="col-1" src="img/Pokeball.jpg">
+				</div>
+				<div id="winner-name"></div>
 			</div><!--
 			--><div class="battle-options">
 
-				<label class="light-label" for="player-name-1">Первый</label>
-				<input id="player-name-1" class="col-1 bottom-bordered" type="text" name="player-name-1" placeholder="Player 1">
+				<label class="light-label" for="player-name-1">Player2</label>
+				<input id="player-name-2" class="col-1 bottom-bordered" type="text" name="player-name-1" placeholder="Player 1" value="Galta Bivveertu">
 			
-				<label class="light-label" for="materialize-1">Что по меню</label>
-				<select id="materialize-1" class="col-1 bottom-bordered">
-					<option>Чебурек обычный</option>
-					<option>Чебурек необычный</option>
-					<option>Чебурек нестандартный</option>
-					<option>Чебурек неординарный</option>
+				<label class="light-label" for="materialize-1">Option2</label>
+				<select id="player-materialize-2" class="col-1 bottom-bordered">
+					<option>Fire</option>
+					<option>Earth</option>
+					<option>Electricity</option>
+					<option>Water</option>
 				</select>
 
-				<label for="player-exp-1">Крутое число</label>
-				<div class="slider-bubble">
-					<div class="experience-value">5000</div>
-					<!-- <div class="arrow-down"></div> -->
-				</div>
-				<input id="player-exp-1" class="col-1 slider" type="range" name="exp1" min="0" max="10000" value="5000">
-				<output id="exp-bubble-1" for="exp1" onforminput="value = exp1.valueAsNumber"></output>
+				<label for="player-exp-2">Value2</label>
+				<input id="player-exp-2" class="col-1 slider" type="range" name="exp1" min="0" max="10000" value="5000">
 
 			</div>
 		</div>
 		<div class="button-wrapper">
-			<button id="button-start">Баттон</button>
+			<button id="button-start">Button</button>
 		</div>	
 	</section>
 
