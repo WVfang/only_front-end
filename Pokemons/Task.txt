@@ -1,6 +1,0 @@
-HTML-page creation
-JS
-   Start fight: button "Fight"
-   Calculating stats => winner => winner's image (*animation)
-	
-   
