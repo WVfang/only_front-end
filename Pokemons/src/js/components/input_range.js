@@ -21,7 +21,7 @@ module.exports = function(message) {
 
 	
 	expElem1.onchange = function() {
-		var offset = 0;
+		var offset = -3;
 		var bubbleOffset;
 		
 		var expValue = (expElem1.value - expElem1.getAttribute("min"))/(expElem1.getAttribute("max") - expElem1.getAttribute("min"));
@@ -35,13 +35,11 @@ module.exports = function(message) {
 		} else if(expValue > 1) {
 			expValue = expTotalWidth;
 		} else {
-			expValue = expTotalWidth * expValue;
+			offset += 13 * expValue; 
+			expValue = 100 * expValue; //expTotalWidth
 		}
-	
-		// bubbleOffset = expRange1; //expBubble1.offsetLeft;
 
-		expBubble1.style.left = expValue + offset + "px";
-		// expBubble1.style.marginLeft = offset + "%";
+		expBubble1.style.left = "calc(" + expValue + "% - (" + offset + "px))";//expValue + offset + "px";
 		expBubble1.innerHTML = expElem1.value;
 
 	}

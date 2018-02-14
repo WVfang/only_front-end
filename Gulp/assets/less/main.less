@@ -2,15 +2,23 @@
 @statistic-panels-margin: 1.66%;
 @statistic-icons-top-margin: 12.5px;
 @margin-between-rows: 30px;
+@modal-button-height: 34px;
 
 body {
 	font-family: Helvetica, "Trebuchet MS", Verdana, sans-serif;
+	background-color: #fff !important;
 }
 
+.button-def() {
+	padding: 5px 20px;
+	font-size: 16px;
+	border: 1px solid @border-color;
+	border-radius: 2px;
+}
+
+// Header of page
 .header {
 	background-color: #fff;
-	font-size: 35px;
-	white-space: nowrap;
 	> div {
 		border-right: 1px solid @border-color;
 		border-bottom: 1px solid @border-color;
@@ -20,11 +28,9 @@ body {
 	}
 }
 
+// Statistic blocks
 .statistic {
 	margin-top: @margin-between-rows;
-	font-size: 15px;
-	font-weight: 700;
-	text-align: center;
 	.statistic-unit {
 		padding: 15px;
 		margin-left: @statistic-panels-margin;
@@ -46,28 +52,103 @@ body {
 	}
 }
 
-.table {
+// Position and dimensions of tables (with users and general info)
+.info-tables {
 	margin-top: @margin-between-rows;
-	.user-table-header {
-		font-size: 20px;
-
-		> div,
-		> button {
-			display: inline-block;
-		}
-
-		.user-table-header-input {
-			float: right;
-		}
-
-		/*.user-table-header-users-amount {
-			padding: 5px;
-			border: 1px solid @border-color;
-			border-radius: 50%;
-		}*/
+	.users-info,
+	.general-info {
+		display: inline-block;
+		margin-left: @statistic-panels-margin;
+		margin-right: @statistic-panels-margin;
+	}
+	.users-info {
+		width: (100/12)*8 + @statistic-panels-margin*6;
+		vertical-align: top;
+	}
+	.general-info {
+		width: (100/12)*2%;
 	}
 }
 
+// Font-size in users-table (14px by default)
+.users-info {
+	font-size: 16px;
+}
+
+// Header of table with users information
+.users-info-header {
+	font-size: 20px;
+	> div,
+	> button,
+	> h2 {
+		display: inline-block;
+		margin: 0; // remove h2 margins
+		margin-left: 15px;
+		vertical-align: middle !important;
+	}
+	>:last-child {
+		margin-left: 0;
+	}
+	.users-amount {
+		padding: 5px;
+		border: 1px solid @border-color;
+		border-radius: 50%;
+	}
+	.add-new {
+		.button-def;
+	}
+	.form-control {
+		border: 1px solid @border-color;
+	}
+	.float-right {
+		float: right;
+	}
+}
+
+.general-info {
+	font-size: 25px;
+	img {
+		width: 30px;
+	}
+}
+
+// Modal
+#edit-user {
+	font-size: 18px;
+	.modal-dialog {
+		width: 275px;
+		.modal-content {
+			padding-bottom: @modal-button-height;
+			border: 1px solid @border-color;
+			border-radius: 0;
+			.modal-header {
+				padding: 5px 10px;
+				border-bottom-color: @border-color;
+			}
+			.modal-body {
+				padding-bottom: 10px;
+			}
+			button {
+				.button-def;
+			}
+			.form-group {
+				margin-bottom: 10px;
+			}
+			.form-control {
+				border: 1px solid @border-color;
+				border-radius: 0;
+			}
+		}
+	}
+}
+// Place modal closer to center
+@media screen and (min-width: 768px) {
+  .modal:before {
+    height: 25%;
+  }
+}
+
+// Change color of table borders
 .table {
 	border: 0.5px solid @border-color !important;
 }
@@ -81,6 +162,10 @@ body {
 	 border: 0.5px solid @border-color !important;
 }
 
+// Align only the part of column header which contains column headers
+.column-headers th {
+	text-align: center !important;
+}
 
 
 
